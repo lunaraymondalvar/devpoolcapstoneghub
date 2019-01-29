@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/catalog', "ItemController@showItems"); 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware('auth')->group(function () {
+	
+	Route::get('/menu/add', "ItemController@showAddItemForm");
+
+});
